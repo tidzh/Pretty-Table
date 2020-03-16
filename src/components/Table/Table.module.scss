@@ -1,0 +1,42 @@
+.root {
+  font-family: "Inter", sans-serif;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+.table {
+  width: 100%;
+  table-layout: fixed;
+  text-align: left;
+}
+.thead {
+  background: #f4f7fc;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #606f89;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  th {
+    padding: 15px 0;
+  }
+}
+.tbody {
+  color: #2e3b52;
+  tr {
+    &:nth-of-type(even) {
+      background: #f4f7fc;
+    }
+  }
+  th {
+    padding: 15px 0;
+  }
+  td {
+    padding: 15px 0;
+  }
+}
+.description, .name {
+  width: 200px;
+}
+.action {
+  width: 125px;
+}
