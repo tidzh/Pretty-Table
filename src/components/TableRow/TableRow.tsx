@@ -7,15 +7,30 @@ import { Checkbox } from "../common/Form/Form";
 
 interface TableRowProps {
   dataRow: ITableRow;
+  checkboxChangeHandler(event: React.ChangeEvent): void;
 }
 
 const TableRow: React.FC<TableRowProps> = ({
-  dataRow: { _id, name, description, rate, balance, deposit, isActive }
+  dataRow: {
+    _id,
+    name,
+    description,
+    rate,
+    balance,
+    deposit,
+    isActive,
+    isChecked
+  },
+  checkboxChangeHandler
 }) => {
   return (
     <tr>
       <td className={style.checkbox}>
-        <Checkbox checkboxID={_id} />
+        <Checkbox
+          checkboxID={_id}
+          isChecked={isChecked}
+          checkboxChangeHandler={checkboxChangeHandler}
+        />
       </td>
       <td>
         <div className={style.name}>{name}</div>

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2c536f8-ecb1-4536-ab14-cf3a262b40e8" name="Default Changelist" comment="Первоначальнальная верстка + получение json данных с сервиса json-generator.com и их последующий рендеринг">
-      <change afterPath="$PROJECT_DIR$/src/components/common/Button/Button.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Button/Buttons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Form/Form.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Form/Form.tsx" afterDir="false" />
+    <list default="true" id="c2c536f8-ecb1-4536-ab14-cf3a262b40e8" name="Default Changelist" comment="Реализация функционала по выбору всех элементов в таблице (Check All) и единичного">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TableRow/TableRow.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableRow/TableRow.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TableRow/TableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableRow/TableRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Button/Buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Button/Buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Form/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Form/Form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/interface.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,8 +109,16 @@
       <updated>1584359472977</updated>
       <workItem from="1584359474350" duration="19420000" />
       <workItem from="1584426333174" duration="7166000" />
-      <workItem from="1584441433563" duration="6226000" />
+      <workItem from="1584441433563" duration="19964000" />
     </task>
+    <task id="LOCAL-00001" summary="Реализован компонент Buttons и Checkbox">
+      <created>1584452933297</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1584452933297</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,17 +126,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Первоначальнальная верстка + получение json данных с сервиса json-generator.com и их последующий рендеринг" />
-    <option name="LAST_COMMIT_MESSAGE" value="Первоначальнальная верстка + получение json данных с сервиса json-generator.com и их последующий рендеринг" />
+    <MESSAGE value="Реализован компонент Buttons и Checkbox" />
+    <MESSAGE value="Реализация функционала по выбору всех элементов в таблице (Check All) и единичного" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализация функционала по выбору всех элементов в таблице (Check All) и единичного" />
   </component>
   <component name="WindowStateProjectService">
     <state x="762" y="330" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584360144659">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
     <state x="762" y="330" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1152@0.0.2048.1152" timestamp="1584360144659" />
-    <state x="607" y="177" key="CommitChangelistDialog2" timestamp="1584396533132">
+    <state x="702" y="169" key="CommitChangelistDialog2" timestamp="1584485752205">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state x="607" y="177" key="CommitChangelistDialog2/0.0.2048.1152@0.0.2048.1152" timestamp="1584396533132" />
+    <state x="702" y="169" key="CommitChangelistDialog2/0.0.2048.1152@0.0.2048.1152" timestamp="1584485752205" />
     <state x="889" y="476" key="Github.ShareDialog" timestamp="1584360283452">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
