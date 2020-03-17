@@ -1,0 +1,16 @@
+.action {
+  box-sizing: border-box;
+  border-radius: 11px;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 80px;
+  padding: 3px 12px;
+}
+.actionActive {
+  background: #0A65FF;
+  border: 1px solid #0A65FF;
+  color: #ffffff;
+}
+.actionInactive {
+  border: 1px solid #606F89;
+}

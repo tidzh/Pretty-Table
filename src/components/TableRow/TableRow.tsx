@@ -1,7 +1,9 @@
 import React from "react";
 import { ITableRow } from "../../utils/interface";
 import { substringText } from "../../utils/helpers";
-import style from "./TableRow.module.scss"
+import style from "./TableRow.module.scss";
+import Button from "../common/Button/Buttons";
+import { Checkbox } from "../common/Form/Form";
 
 interface TableRowProps {
   dataRow: ITableRow;
@@ -12,6 +14,9 @@ const TableRow: React.FC<TableRowProps> = ({
 }) => {
   return (
     <tr>
+      <td className={style.checkbox}>
+        <Checkbox checkboxID={_id} />
+      </td>
       <td>
         <div className={style.name}>{name}</div>
         <div className={style.id}>{_id}</div>
@@ -20,7 +25,15 @@ const TableRow: React.FC<TableRowProps> = ({
       <td>{rate}</td>
       <td>{balance}</td>
       <td>{deposit}</td>
-      <td>{isActive ? "Active" : "inactive"}</td>
+      <td>
+        <Button
+          buttonText={isActive ? "Active" : "inactive"}
+          buttonClass={{
+            default: "action",
+            modificator: isActive ? "actionActive" : "actionInactive"
+          }}
+        />
+      </td>
       <td>...</td>
     </tr>
   );

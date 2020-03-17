@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./Table.module.scss";
 import TableRow from "../TableRow/TableRow";
 import { ITableRow } from "../../utils/interface";
+import {Checkbox} from "../common/Form/Form";
 const axios = require("axios");
 
 const Table: React.FC = () => {
@@ -22,6 +23,7 @@ const Table: React.FC = () => {
       <table className={style.table}>
         <thead className={style.thead}>
           <tr>
+            <th scope="col" className={style.checkbox}><Checkbox checkboxID={'all'}/></th>
             <th scope="col" className={style.name}>name</th>
             <th scope="col" className={style.description}>description</th>
             <th scope="col">Rate</th>
