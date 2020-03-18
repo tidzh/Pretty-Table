@@ -24,7 +24,7 @@ const TableRow: React.FC<TableRowProps> = ({
   checkboxChangeHandler
 }) => {
   return (
-    <tr>
+    <tr className={isChecked ? style.active : ''}>
       <td className={style.checkbox}>
         <Checkbox
           checkboxID={_id}

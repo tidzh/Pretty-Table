@@ -1,7 +1,8 @@
 .root {
   font-family: "Inter", sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(75, 81, 91, 0.15);
   max-width: 1020px;
-  margin: 0 auto;
+  margin: 20px auto 20px;
 }
 .table {
   width: 100%;
@@ -23,8 +24,10 @@
 .tbody {
   color: #2e3b52;
   tr {
+    background: #F4F7FC;
+    border-left: 3px solid transparent;
     &:nth-of-type(even) {
-      background: #f4f7fc;
+      background: #FFFFFF;
     }
   }
   th, td {
@@ -33,7 +36,7 @@
   }
 }
 .checkbox {
-  width: 40px;
+  width: 50px;
   text-align: center;
 }
 .description, .name {

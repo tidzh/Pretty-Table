@@ -9,10 +9,15 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 17px;
-  color: #2E3B52;
+  color: #2e3b52;
 }
 .description {
   font-size: 14px;
   line-height: 17px;
-  color: #2E3B52;
+  color: #2e3b52;
+}
+.active {
+  background: #ebf2ff !important;
+  position: relative;
+  border-left: 3px solid #0a65ff !important;
 }
