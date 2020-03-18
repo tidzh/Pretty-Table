@@ -4,6 +4,8 @@ import { substringText } from "../../utils/helpers";
 import style from "./TableRow.module.scss";
 import Button from "../common/Button/Buttons";
 import { Checkbox } from "../common/Form/Form";
+import classNames from "classnames";
+import {IconEdit, IconDelete, IconMore} from "../common/Icons/Icons";
 
 interface TableRowProps {
   dataRow: ITableRow;
@@ -24,7 +26,7 @@ const TableRow: React.FC<TableRowProps> = ({
   checkboxChangeHandler
 }) => {
   return (
-    <tr className={isChecked ? style.active : ''}>
+    <tr className={classNames({ [`${style.active}`]: isChecked })}>
       <td className={style.checkbox}>
         <Checkbox
           checkboxID={_id}
@@ -49,7 +51,13 @@ const TableRow: React.FC<TableRowProps> = ({
           }}
         />
       </td>
-      <td>...</td>
+      <td className={style.actions}>
+          <div className={style.activeWrap}>
+              <IconEdit/>
+              <IconDelete/>
+              <IconMore/>
+          </div>
+      </td>
     </tr>
   );
 };

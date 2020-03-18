@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./Table.module.scss";
 import TableRow from "../TableRow/TableRow";
 import { Checkbox } from "../common/Form/Form";
+import {IconMore} from "../common/Icons/Icons";
 
 const axios = require("axios");
 
@@ -74,8 +75,8 @@ const Table: React.FC = () => {
             <th scope="col">balance</th>
             <th scope="col">Deposit</th>
             <th scope="col">Status</th>
-            <th scope="col" className={style.action}>
-              ...
+            <th scope="col" className={style.actions}>
+              <IconMore/>
             </th>
           </tr>
         </thead>

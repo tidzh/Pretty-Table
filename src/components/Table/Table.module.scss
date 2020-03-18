@@ -17,17 +17,21 @@
   color: #606f89;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  tr {
+    border-left: 3px solid transparent;
+  }
   th {
     padding: 15px 5px;
+    vertical-align: middle;
   }
 }
 .tbody {
   color: #2e3b52;
   tr {
-    background: #F4F7FC;
+    background: #ffffff;
     border-left: 3px solid transparent;
     &:nth-of-type(even) {
-      background: #FFFFFF;
+      background: #F4F7FC;
     }
   }
   th, td {
@@ -42,6 +46,11 @@
 .description, .name {
   width: 200px;
 }
-.action {
-  width: 125px;
+.actions {
+  width: 100px;
+  padding-right: 15px !important;
+  text-align: center;
+  svg {
+    fill: #7D90B2;
+  }
 }

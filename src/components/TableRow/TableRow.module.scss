@@ -21,3 +21,18 @@
   position: relative;
   border-left: 3px solid #0a65ff !important;
 }
+.actions {
+  text-align: center;
+  padding-right: 15px !important;
+  svg {
+    fill: #7D90B2;
+    cursor: pointer;
+    &:hover {
+      fill: #000000;
+    }
+  }
+}
+.activeWrap {
+  display: flex;
+  justify-content: space-around;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Button.module.scss";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 
 interface Button {
   buttonText: string;
