@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import style from "./Table.module.scss";
 import TableRow from "../TableRow/TableRow";
 import { Checkbox } from "../common/Form/Form";
-import {IconMore} from "../common/Icons/Icons";
+import { IconMore } from "../common/Icons/Icons";
 
 const axios = require("axios");
 
 interface ITableRow {
   _id: string;
   isActive: boolean;
-  isChecked: boolean;
   name: string;
   rate: number;
   balance: string;
   deposit: string;
   description: string;
+  isChecked: boolean;
+  isAction: boolean;
 }
 
 const Table: React.FC = () => {
@@ -27,7 +28,7 @@ const Table: React.FC = () => {
         "https://next.json-generator.com/api/json/get/N1qL6Kdru"
       );
       const newData = result.data.map((item: ITableRow) => {
-        return { ...item, isChecked: checkAll };
+        return { ...item, isChecked: checkAll, isAction: false };
       });
       setItems(newData);
     };
@@ -51,6 +52,16 @@ const Table: React.FC = () => {
       });
       setItems(newData);
     }
+  };
+  const handlerActionsToggle = (id: string) => {
+    const newData = dataTable.map(item => {
+      if (item._id === id) {
+        return { ...item, isAction: !item.isAction };
+      } else {
+        return item;
+      }
+    });
+    setItems(newData);
   };
 
   return (
@@ -76,7 +87,7 @@ const Table: React.FC = () => {
             <th scope="col">Deposit</th>
             <th scope="col">Status</th>
             <th scope="col" className={style.actions}>
-              <IconMore/>
+              <IconMore />
             </th>
           </tr>
         </thead>
@@ -85,6 +96,7 @@ const Table: React.FC = () => {
             <TableRow
               key={item._id}
               dataRow={item}
+              handlerActionsToggle={handlerActionsToggle}
               checkboxChangeHandler={checkboxChangeHandler}
             />
           ))}

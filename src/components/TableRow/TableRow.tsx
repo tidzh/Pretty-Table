@@ -5,11 +5,13 @@ import style from "./TableRow.module.scss";
 import Button from "../common/Button/Buttons";
 import { Checkbox } from "../common/Form/Form";
 import classNames from "classnames";
-import {IconEdit, IconDelete, IconMore} from "../common/Icons/Icons";
+import { IconEdit, IconDelete, IconMore } from "../common/Icons/Icons";
+import ActionsMenu from "../common/ActionsMenu/ActionsMenu";
 
 interface TableRowProps {
   dataRow: ITableRow;
   checkboxChangeHandler(event: React.ChangeEvent): void;
+  handlerActionsToggle(id: string): void;
 }
 
 const TableRow: React.FC<TableRowProps> = ({
@@ -21,9 +23,11 @@ const TableRow: React.FC<TableRowProps> = ({
     balance,
     deposit,
     isActive,
-    isChecked
+    isChecked,
+    isAction,
   },
-  checkboxChangeHandler
+  checkboxChangeHandler,
+  handlerActionsToggle
 }) => {
   return (
     <tr className={classNames({ [`${style.active}`]: isChecked })}>
@@ -52,11 +56,14 @@ const TableRow: React.FC<TableRowProps> = ({
         />
       </td>
       <td className={style.actions}>
-          <div className={style.activeWrap}>
-              <IconEdit/>
-              <IconDelete/>
-              <IconMore/>
+        <div className={style.activeWrap}>
+          <IconEdit />
+          <IconDelete />
+          <div onClick={handlerActionsToggle.bind(null, _id)}>
+            <IconMore />
           </div>
+          <ActionsMenu isAction={isAction} id={_id} handlerActionToggle={handlerActionsToggle} />
+        </div>
       </td>
     </tr>
   );

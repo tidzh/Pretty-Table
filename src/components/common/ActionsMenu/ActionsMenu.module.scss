@@ -1,0 +1,43 @@
+.root {
+  display: none;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+.rootActive {
+  display: block;
+}
+
+.list {
+  width: 100px;
+  background: #FFFFFF;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  border-radius: 2px;
+}
+
+.listItem {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background: #EBF2FF;
+  }
+}
+
+.close {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #F1F4F8;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+  padding: 0;
+  border: none;
+  svg {
+    fill: #303641;
+  }
+}
