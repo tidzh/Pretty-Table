@@ -13,6 +13,7 @@ interface ITableRow {
   rate: number;
   balance: string;
   deposit: string;
+  currency: string;
   description: string;
   isChecked: boolean;
   isAction: boolean;
@@ -63,6 +64,10 @@ const Table: React.FC = () => {
     });
     setItems(newData);
   };
+  const handlerDeleteItem = (id: string) => {
+    const newData = dataTable.filter(item => item._id !== id);
+    setItems(newData);
+  };
 
   return (
     <div className={style.root}>
@@ -82,8 +87,12 @@ const Table: React.FC = () => {
             <th scope="col" className={style.description}>
               description
             </th>
-            <th scope="col">Rate</th>
-            <th scope="col">balance</th>
+            <th scope="col" className={style.rate}>
+              Rate
+            </th>
+            <th scope="col" className={style.balance}>
+              balance
+            </th>
             <th scope="col">Deposit</th>
             <th scope="col">Status</th>
             <th scope="col" className={style.actions}>
@@ -98,6 +107,7 @@ const Table: React.FC = () => {
               dataRow={item}
               handlerActionsToggle={handlerActionsToggle}
               checkboxChangeHandler={checkboxChangeHandler}
+              handlerDeleteItem={handlerDeleteItem}
             />
           ))}
         </tbody>

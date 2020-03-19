@@ -7,5 +7,6 @@ export interface ITableRow {
   rate: number
   balance: string
   deposit: string
+  currency: string
   description: string
 }

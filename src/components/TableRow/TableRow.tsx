@@ -12,6 +12,7 @@ interface TableRowProps {
   dataRow: ITableRow;
   checkboxChangeHandler(event: React.ChangeEvent): void;
   handlerActionsToggle(id: string): void;
+  handlerDeleteItem(id: string): void;
 }
 
 const TableRow: React.FC<TableRowProps> = ({
@@ -22,12 +23,14 @@ const TableRow: React.FC<TableRowProps> = ({
     rate,
     balance,
     deposit,
+    currency,
     isActive,
     isChecked,
-    isAction,
+    isAction
   },
   checkboxChangeHandler,
-  handlerActionsToggle
+  handlerActionsToggle,
+  handlerDeleteItem
 }) => {
   return (
     <tr className={classNames({ [`${style.active}`]: isChecked })}>
@@ -43,9 +46,24 @@ const TableRow: React.FC<TableRowProps> = ({
         <div className={style.id}>{_id}</div>
       </td>
       <td className={style.description}>{substringText(description)}</td>
-      <td>{rate}</td>
-      <td>{balance}</td>
-      <td>{deposit}</td>
+      <td>
+        <div className={style.profit}>
+          <div className={style.value}>{rate}</div>
+          <div className={style.currency}>{currency}</div>
+        </div>
+      </td>
+      <td>
+        <div className={style.profit}>
+          <div className={style.value}>{balance}</div>
+          <div className={style.currency}>{currency}</div>
+        </div>
+      </td>
+      <td>
+        <div className={style.profit}>
+          <div className={style.value}>{deposit} </div>
+          <div className={style.currency}>{currency}</div>
+        </div>
+      </td>
       <td>
         <Button
           buttonText={isActive ? "Active" : "inactive"}
@@ -58,11 +76,17 @@ const TableRow: React.FC<TableRowProps> = ({
       <td className={style.actions}>
         <div className={style.activeWrap}>
           <IconEdit />
-          <IconDelete />
+          <div onClick={handlerDeleteItem.bind(null, _id)}>
+            <IconDelete />
+          </div>
           <div onClick={handlerActionsToggle.bind(null, _id)}>
             <IconMore />
           </div>
-          <ActionsMenu isAction={isAction} id={_id} handlerActionToggle={handlerActionsToggle} />
+          <ActionsMenu
+            isAction={isAction}
+            id={_id}
+            handlerActionToggle={handlerActionsToggle}
+          />
         </div>
       </td>
     </tr>

@@ -21,7 +21,7 @@
     border-left: 3px solid transparent;
   }
   th {
-    padding: 15px 5px;
+    padding: 15px 10px;
     vertical-align: middle;
   }
 }
@@ -35,12 +35,12 @@
     }
   }
   th, td {
-    padding: 15px 5px;
+    padding: 15px 10px;
     vertical-align: middle;
   }
 }
 .checkbox {
-  width: 50px;
+  width: 40px;
   text-align: center;
 }
 .description, .name {
@@ -53,4 +53,10 @@
   svg {
     fill: #7D90B2;
   }
+}
+.rate {
+  width: 70px;
+}
+.balance {
+  width: 80px;
 }
