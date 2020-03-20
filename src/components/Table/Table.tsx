@@ -12,13 +12,15 @@ interface ITableData {
   data: RowData[];
   dataCloneForSearch: RowData[];
   checkAll: boolean;
+  isFetching: boolean;
 }
 
 const Table: React.FC = () => {
   const [dataTable, setDataTable] = useState<ITableData>({
     data: [],
     dataCloneForSearch: [],
-    checkAll: false
+    checkAll: false,
+    isFetching: false
   });
   const [search, setSearch] = useState<string>("");
 
@@ -37,7 +39,8 @@ const Table: React.FC = () => {
       setDataTable({
         ...dataTable,
         data: [...newData],
-        dataCloneForSearch: [...newData]
+        dataCloneForSearch: [...newData],
+        isFetching: true
       });
     };
     fetchData();
@@ -92,12 +95,13 @@ const Table: React.FC = () => {
     setSearch(event.target.value);
     setDataTable({ ...dataTable, dataCloneForSearch: [...dataTable.data] });
 
-    const newData = dataTable.dataCloneForSearch.filter(
-      item => item.name.toLowerCase().search(search.toLowerCase()) !== -1
+    const newData = dataTable.dataCloneForSearch.filter(item =>
+      item.name.toLowerCase().includes(search.toLowerCase())
     );
     setDataTable({ ...dataTable, data: [...newData] });
   };
 
+  if (!dataTable.isFetching) return null;
   return (
     <div className={style.root}>
       <div className={style.header}>
@@ -145,6 +149,13 @@ const Table: React.FC = () => {
           </tr>
         </thead>
         <tbody className={style.tbody}>
+          {dataTable.data.length === 0 && (
+            <tr>
+              <td colSpan={8}>
+                <div className={style.notFound}>Пользователи не найдены</div>
+              </td>
+            </tr>
+          )}
           {dataTable.data.map(item => (
             <TableRow
               key={item._id}

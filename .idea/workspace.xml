@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2c536f8-ecb1-4536-ab14-cf3a262b40e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/Search/Search.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Search/Search.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TableRow/TableRow.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableRow/TableRow.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TableRow/TableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableRow/TableRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Button/Button.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Button/Button.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Icons/Icons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Icons/Icons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/interface.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,9 +201,9 @@
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
     <state x="525" y="215" key="SettingsEditor/0.0.2048.1152@0.0.2048.1152" timestamp="1584439493692" />
-    <state x="624" y="316" key="Vcs.Push.Dialog.v2" timestamp="1584614120856">
+    <state x="624" y="316" key="Vcs.Push.Dialog.v2" timestamp="1584702695072">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state x="624" y="316" key="Vcs.Push.Dialog.v2/0.0.2048.1152@0.0.2048.1152" timestamp="1584614120856" />
+    <state x="624" y="316" key="Vcs.Push.Dialog.v2/0.0.2048.1152@0.0.2048.1152" timestamp="1584702695072" />
   </component>
 </project>
