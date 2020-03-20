@@ -1,0 +1,23 @@
+.root {
+  position: relative;
+}
+.input {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 12px 12px 35px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #2E3B52;
+  background: #DAE1EC;
+  border-radius: 4px;
+  border: none;
+}
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  margin-top: -10px;
+  svg {
+    fill: #6F809E;
+  }
+}

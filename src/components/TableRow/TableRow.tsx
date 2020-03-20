@@ -1,5 +1,5 @@
 import React from "react";
-import { ITableRow } from "../../utils/interface";
+import { RowData } from "../../utils/interface";
 import { substringText } from "../../utils/helpers";
 import style from "./TableRow.module.scss";
 import Button from "../common/Button/Buttons";
@@ -9,7 +9,7 @@ import { IconEdit, IconDelete, IconMore } from "../common/Icons/Icons";
 import ActionsMenu from "../common/ActionsMenu/ActionsMenu";
 
 interface TableRowProps {
-  dataRow: ITableRow;
+  dataRow: RowData;
   checkboxChangeHandler(event: React.ChangeEvent): void;
   handlerActionsToggle(id: string): void;
   handlerDeleteItem(id: string): void;

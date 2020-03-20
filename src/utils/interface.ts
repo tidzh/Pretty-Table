@@ -1,4 +1,4 @@
-export interface ITableRow {
+export interface RowData {
   _id: string
   isActive: boolean
   isAction:boolean

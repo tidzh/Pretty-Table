@@ -2,87 +2,126 @@ import React, { useEffect, useState } from "react";
 import style from "./Table.module.scss";
 import TableRow from "../TableRow/TableRow";
 import { Checkbox } from "../common/Form/Form";
-import { IconMore } from "../common/Icons/Icons";
+import { IconAdd, IconMore, IconSort } from "../common/Icons/Icons";
+import Search from "../common/Search/Search";
+import { RowData } from "../../utils/interface";
 
 const axios = require("axios");
 
-interface ITableRow {
-  _id: string;
-  isActive: boolean;
-  name: string;
-  rate: number;
-  balance: string;
-  deposit: string;
-  currency: string;
-  description: string;
-  isChecked: boolean;
-  isAction: boolean;
+interface ITableData {
+  data: RowData[];
+  dataCloneForSearch: RowData[];
+  checkAll: boolean;
 }
 
 const Table: React.FC = () => {
-  const [dataTable, setItems] = useState<ITableRow[]>([]);
-  const [checkAll, setCheckAll] = useState<boolean>(false);
+  const [dataTable, setDataTable] = useState<ITableData>({
+    data: [],
+    dataCloneForSearch: [],
+    checkAll: false
+  });
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
         "https://next.json-generator.com/api/json/get/N1qL6Kdru"
       );
-      const newData = result.data.map((item: ITableRow) => {
-        return { ...item, isChecked: checkAll, isAction: false };
+      const newData = result.data.map((item: ITableData) => {
+        return {
+          ...item,
+          isChecked: dataTable.checkAll,
+          isAction: false
+        };
       });
-      setItems(newData);
+      setDataTable({
+        ...dataTable,
+        data: [...newData],
+        dataCloneForSearch: [...newData]
+      });
     };
     fetchData();
-  }, [checkAll]);
+  }, [dataTable.checkAll]);
 
   const checkboxChangeHandler = (event: React.ChangeEvent) => {
     if (event.target.id === "allCheckbox") {
-      setCheckAll(!checkAll);
-      const newData = dataTable.map((item: any) => {
-        return { ...item, isChecked: !checkAll };
+      setDataTable({ ...dataTable, checkAll: !dataTable.checkAll });
+      const newData = dataTable.data.map((item: RowData) => {
+        return {
+          ...item,
+          isChecked: !dataTable.checkAll
+        };
       });
-      setItems(newData);
+      setDataTable({
+        ...dataTable,
+        data: [...newData],
+        checkAll: !dataTable.checkAll
+      });
     } else {
-      const newData = dataTable.map(item => {
+      const newData = dataTable.data.map(item => {
         if (item._id === event.target.id) {
-          return { ...item, isChecked: !item.isChecked };
+          return {
+            ...item,
+            isChecked: !item.isChecked
+          };
         } else {
           return item;
         }
       });
-      setItems(newData);
+      setDataTable({ ...dataTable, data: [...newData] });
     }
   };
   const handlerActionsToggle = (id: string) => {
-    const newData = dataTable.map(item => {
+    const newData = dataTable.data.map(item => {
       if (item._id === id) {
-        return { ...item, isAction: !item.isAction };
+        return {
+          ...item,
+          isAction: !item.isAction
+        };
       } else {
         return item;
       }
     });
-    setItems(newData);
+    setDataTable({ ...dataTable, data: [...newData] });
   };
   const handlerDeleteItem = (id: string) => {
-    const newData = dataTable.filter(item => item._id !== id);
-    setItems(newData);
+    const newData = dataTable.data.filter(item => item._id !== id);
+    setDataTable({ ...dataTable, data: [...newData] });
+  };
+  const handlerSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+    setDataTable({ ...dataTable, dataCloneForSearch: [...dataTable.data] });
+
+    const newData = dataTable.dataCloneForSearch.filter(
+      item => item.name.toLowerCase().search(search.toLowerCase()) !== -1
+    );
+    setDataTable({ ...dataTable, data: [...newData] });
   };
 
   return (
     <div className={style.root}>
+      <div className={style.header}>
+        <Search handlerSearch={handlerSearch} searchValue={search} />
+        <button className={style.add}>
+          <IconAdd />
+          Add Customer
+        </button>
+      </div>
       <table className={style.table}>
         <thead className={style.thead}>
           <tr>
             <th scope="col" className={style.checkbox}>
               <Checkbox
                 checkboxID="allCheckbox"
-                isChecked={checkAll}
+                isChecked={dataTable.checkAll}
                 checkboxChangeHandler={checkboxChangeHandler}
               />
             </th>
             <th scope="col" className={style.name}>
-              name
+              Name
+              <span className={style.sort}>
+                <IconSort />
+              </span>
             </th>
             <th scope="col" className={style.description}>
               description
@@ -91,17 +130,22 @@ const Table: React.FC = () => {
               Rate
             </th>
             <th scope="col" className={style.balance}>
-              balance
+              Balance
             </th>
             <th scope="col">Deposit</th>
-            <th scope="col">Status</th>
+            <th scope="col">
+              Status
+              <span className={style.sort}>
+                <IconSort />
+              </span>
+            </th>
             <th scope="col" className={style.actions}>
               <IconMore />
             </th>
           </tr>
         </thead>
         <tbody className={style.tbody}>
-          {dataTable.map(item => (
+          {dataTable.data.map(item => (
             <TableRow
               key={item._id}
               dataRow={item}

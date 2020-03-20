@@ -18,8 +18,18 @@
 }
 .active {
   background: #ebf2ff !important;
-  position: relative;
-  border-left: 3px solid #0a65ff !important;
+  .checkbox {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      background: #0a65ff;
+      width: 4px;
+      height: 100%;
+      left: 0;
+      bottom: 0;
+    }
+  }
 }
 .actions {
   position: relative;

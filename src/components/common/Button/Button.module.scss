@@ -10,6 +10,9 @@
   background: #0A65FF;
   border: 1px solid #0A65FF;
   color: #ffffff;
+  &:hover {
+    background: #0052DB;
+  }
 }
 .actionInactive {
   border: 1px solid #606F89;
