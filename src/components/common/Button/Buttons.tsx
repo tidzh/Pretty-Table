@@ -11,7 +11,6 @@ interface Button {
 }
 
 const Button: React.FC<Button> = ({ buttonText, buttonClass }) => {
-  console.log(buttonClass.modificator)
   return (
     <button
       className={classNames(

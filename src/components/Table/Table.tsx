@@ -109,7 +109,12 @@ const Table: React.FC = () => {
   const handlerSort = (event: React.MouseEvent<HTMLElement>) => {
     const sortID = event.currentTarget.id;
     const sortDirection = dataTable.sortDirection ? "asc" : "desc";
-    const sortResult = orderBy(dataTable.data, sortID, [sortDirection]);
+    let sortResult;
+    if (sortID === "name") {
+      sortResult = orderBy(dataTable.data, sortID, [sortDirection]);
+    } else {
+      sortResult = orderBy(dataTable.data, result => result.status, "asc");
+    }
     setDataTable({
       ...dataTable,
       data: [...sortResult],
@@ -155,7 +160,7 @@ const Table: React.FC = () => {
             <th scope="col">Deposit</th>
             <th scope="col">
               Status
-              <span className={style.sort}>
+              <span id="status" className={style.sort} onClick={handlerSort}>
                 <IconSort />
               </span>
             </th>
