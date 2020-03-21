@@ -24,7 +24,7 @@ const TableRow: React.FC<TableRowProps> = ({
     balance,
     deposit,
     currency,
-    isActive,
+    status,
     isChecked,
     isAction
   },
@@ -66,10 +66,10 @@ const TableRow: React.FC<TableRowProps> = ({
       </td>
       <td>
         <Button
-          buttonText={isActive ? "Active" : "inactive"}
+          buttonText={status}
           buttonClass={{
-            default: "action",
-            modificator: isActive ? "actionActive" : "actionInactive"
+            default: "btn",
+            modificator: status.toLowerCase()
           }}
         />
       </td>

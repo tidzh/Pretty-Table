@@ -1,4 +1,4 @@
-.action {
+.btn {
   box-sizing: border-box;
   border-radius: 11px;
   text-transform: uppercase;
@@ -6,14 +6,48 @@
   width: 80px;
   padding: 3px 12px;
 }
-.actionActive {
-  background: #0A65FF;
-  border: 1px solid #0A65FF;
+.active {
+  background: #0a65ff;
+  border: 1px solid #0a65ff;
   color: #ffffff;
   &:hover {
-    background: #0052DB;
+    background: #0052db;
+    border-color: #0052db;
   }
 }
-.actionInactive {
-  border: 1px solid #606F89;
+.inactive {
+  background: transparent;
+  border: 1px solid #606f89;
+  color: #606f89;
+  &:hover {
+    background: #606F89;
+    color: #ffffff;
+  }
+}
+.paid {
+  background: #008400;
+  border: 1px solid #008400;
+  color: #ffffff;
+  &:hover {
+    background: #169d16;
+    border-color: #169d16;
+  }
+}
+.ordered {
+  background: #28a745;
+  border: 1px solid #28a745;
+  color: #ffffff;
+  &:hover {
+    background: #218838;
+    border-color: #1e7e34;
+  }
+}
+.open {
+  background: transparent;
+  color: #ba5300;
+  border: 1px solid #ba5300;
+  &:hover {
+    background: #ba5300;
+    color: #ffffff;
+  }
 }

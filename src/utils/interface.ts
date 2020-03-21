@@ -1,6 +1,6 @@
 export interface RowData {
   _id: string
-  isActive: boolean
+  status: string
   isAction:boolean
   isChecked: boolean
   name: string
