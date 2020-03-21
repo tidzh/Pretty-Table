@@ -94,11 +94,14 @@ const Table: React.FC = () => {
   const handlerSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
     setDataTable({ ...dataTable, dataCloneForSearch: [...dataTable.data] });
-
-    const newData = dataTable.dataCloneForSearch.filter(item =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    );
-    setDataTable({ ...dataTable, data: [...newData] });
+    if (search.length >= 2) {
+      const newData = dataTable.dataCloneForSearch.filter(
+        item => item.name.toLowerCase().search(search.toLowerCase()) !== -1
+      );
+      setDataTable({ ...dataTable, data: [...newData] });
+    } else {
+      setDataTable({ ...dataTable, data: [...dataTable.dataCloneForSearch] });
+    }
   };
 
   if (!dataTable.isFetching) return null;
