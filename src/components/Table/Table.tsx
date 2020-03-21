@@ -5,6 +5,7 @@ import { Checkbox } from "../common/Form/Form";
 import { IconAdd, IconMore, IconSort } from "../common/Icons/Icons";
 import Search from "../common/Search/Search";
 import { RowData } from "../../utils/interface";
+import orderBy from "lodash/orderBy";
 
 const axios = require("axios");
 
@@ -13,6 +14,7 @@ interface ITableData {
   dataCloneForSearch: RowData[];
   checkAll: boolean;
   isFetching: boolean;
+  sortDirection: boolean;
 }
 
 const Table: React.FC = () => {
@@ -20,7 +22,8 @@ const Table: React.FC = () => {
     data: [],
     dataCloneForSearch: [],
     checkAll: false,
-    isFetching: false
+    isFetching: false,
+    sortDirection: true
   });
   const [search, setSearch] = useState<string>("");
 
@@ -46,7 +49,7 @@ const Table: React.FC = () => {
     fetchData();
   }, [dataTable.checkAll]);
 
-  const checkboxChangeHandler = (event: React.ChangeEvent) => {
+  const handlerCheckboxChange = (event: React.ChangeEvent) => {
     if (event.target.id === "allCheckbox") {
       setDataTable({ ...dataTable, checkAll: !dataTable.checkAll });
       const newData = dataTable.data.map((item: RowData) => {
@@ -103,6 +106,16 @@ const Table: React.FC = () => {
       setDataTable({ ...dataTable, data: [...dataTable.dataCloneForSearch] });
     }
   };
+  const handlerSort = (event: React.MouseEvent<HTMLElement>) => {
+    const sortID = event.currentTarget.id;
+    const sortDirection = dataTable.sortDirection ? "asc" : "desc";
+    const sortResult = orderBy(dataTable.data, sortID, [sortDirection]);
+    setDataTable({
+      ...dataTable,
+      data: [...sortResult],
+      sortDirection: !dataTable.sortDirection
+    });
+  };
 
   if (!dataTable.isFetching) return null;
   return (
@@ -121,12 +134,12 @@ const Table: React.FC = () => {
               <Checkbox
                 checkboxID="allCheckbox"
                 isChecked={dataTable.checkAll}
-                checkboxChangeHandler={checkboxChangeHandler}
+                checkboxChangeHandler={handlerCheckboxChange}
               />
             </th>
             <th scope="col" className={style.name}>
               Name
-              <span className={style.sort}>
+              <span id="name" className={style.sort} onClick={handlerSort}>
                 <IconSort />
               </span>
             </th>
@@ -164,7 +177,7 @@ const Table: React.FC = () => {
               key={item._id}
               dataRow={item}
               handlerActionsToggle={handlerActionsToggle}
-              checkboxChangeHandler={checkboxChangeHandler}
+              checkboxChangeHandler={handlerCheckboxChange}
               handlerDeleteItem={handlerDeleteItem}
             />
           ))}
