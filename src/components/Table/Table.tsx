@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import style from "./Table.module.scss";
 import TableRow from "../TableRow/TableRow";
 import { Checkbox } from "../common/Form/Form";
@@ -12,11 +13,9 @@ import {
 import Search from "../common/Search/Search";
 import { RowData } from "../../utils/interface";
 import orderBy from "lodash/orderBy";
-import { quantityPage } from "../../utils/helpers";
+import { quantityPage, countActiveCustomers } from "../../utils/helpers";
 import { perPage } from "../../constants";
 import ChangePerPage from "../common/ChangePerPage/ChangePerPage";
-
-const axios = require("axios");
 
 interface ITableData {
   data: RowData[];
@@ -44,10 +43,10 @@ const Table: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
+      let response = await axios(
         "https://next.json-generator.com/api/json/get/N1qL6Kdru"
       );
-      const newData = result.data.map((item: ITableData) => {
+      const newData = response.data.map((item: ITableData) => {
         return {
           ...item,
           isChecked: dataTable.checkAll,
@@ -62,7 +61,8 @@ const Table: React.FC = () => {
       });
     };
     fetchData();
-  }, [dataTable.checkAll]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handlerCheckboxChange = (event: React.ChangeEvent) => {
     if (event.target.id === "allCheckbox") {
@@ -238,13 +238,12 @@ const Table: React.FC = () => {
       <div className={style.footer}>
         <div>
           <span className="uppercase">active customers: </span>
-          <b>{dataTable.currentPage * dataTable.perPage}</b>/
-          {dataTable.data.length}
+          <b>{countActiveCustomers(dataTable.data)}</b>/{dataTable.data.length}
         </div>
         <div className={style.navigation}>
           <div className={style.perPage}>
             <span>Rows per page:</span>
-            <ChangePerPage handlerChangePerPage={handlerChangePerPage}/>
+            <ChangePerPage handlerChangePerPage={handlerChangePerPage} />
           </div>
           <div className={style.quantity}>
             {quantityPage(
