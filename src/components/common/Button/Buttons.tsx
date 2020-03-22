@@ -1,16 +1,9 @@
 import React from "react";
 import style from "./Button.module.scss";
 import classNames from "classnames";
+import { ButtonProps } from "../../../utils/interface";
 
-interface Button {
-  buttonText: string;
-  buttonClass: {
-    default: string;
-    modificator: string;
-  };
-}
-
-const Button: React.FC<Button> = ({ buttonText, buttonClass }) => {
+const Button: React.FC<ButtonProps> = ({ buttonText, buttonClass }) => {
   return (
     <button
       className={classNames(

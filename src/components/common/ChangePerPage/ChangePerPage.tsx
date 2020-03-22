@@ -1,9 +1,6 @@
 import React from "react";
 import style from "../ChangePerPage/ChangePerPage.module.scss";
-
-interface ChangePerPageProps {
-  handlerChangePerPage(event: React.FormEvent<HTMLSelectElement>): void;
-}
+import { ChangePerPageProps } from "../../../utils/interface";
 
 const ChangePerPage: React.FC<ChangePerPageProps> = ({
   handlerChangePerPage

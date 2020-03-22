@@ -11,25 +11,14 @@ import {
   IconNext
 } from "../common/Icons/Icons";
 import Search from "../common/Search/Search";
-import { RowData } from "../../utils/interface";
+import { ITableDataProps, RowData } from "../../utils/interface";
 import orderBy from "lodash/orderBy";
 import { quantityPage, countActiveCustomers } from "../../utils/helpers";
 import { perPage } from "../../constants";
 import ChangePerPage from "../common/ChangePerPage/ChangePerPage";
 
-interface ITableData {
-  data: RowData[];
-  dataCloneForSearch: RowData[];
-  checkAll: boolean;
-  isFetching: boolean;
-  sortDirection: boolean;
-  perPage: number;
-  currentPage: number;
-  prevPage: number;
-}
-
 const Table: React.FC = () => {
-  const [dataTable, setDataTable] = useState<ITableData>({
+  const [dataTable, setDataTable] = useState<ITableDataProps>({
     data: [],
     dataCloneForSearch: [],
     checkAll: false,
@@ -46,7 +35,7 @@ const Table: React.FC = () => {
       let response = await axios(
         "https://next.json-generator.com/api/json/get/N1qL6Kdru"
       );
-      const newData = response.data.map((item: ITableData) => {
+      const newData = response.data.map((item: ITableDataProps) => {
         return {
           ...item,
           isChecked: dataTable.checkAll,

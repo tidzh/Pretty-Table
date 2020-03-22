@@ -2,14 +2,9 @@ import React from "react";
 import style from "../ActionsMenu/ActionsMenu.module.scss";
 import { IconClose } from "../Icons/Icons";
 import classNames from "classnames";
+import { ActionsMenuProps } from "../../../utils/interface";
 
-interface ActionsMenu {
-  isAction: boolean;
-  id: string;
-  handlerActionToggle(id: string): void;
-}
-
-const ActionsMenu: React.FC<ActionsMenu> = ({
+const ActionsMenu: React.FC<ActionsMenuProps> = ({
   isAction,
   id,
   handlerActionToggle

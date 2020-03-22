@@ -1,7 +1,7 @@
 {
   "name": "sorttable",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://tidzh.github.io/Pretty-Table/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -16,6 +16,7 @@
     "@types/sass": "^1.16.0",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "gh-pages": "^2.2.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -25,8 +26,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

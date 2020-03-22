@@ -1,13 +1,9 @@
 import React from "react";
 import style from "../Search/Search.module.scss";
 import { IconSearch } from "../Icons/Icons";
+import { SearchProps } from "../../../utils/interface";
 
-interface Search {
-  searchValue: string;
-  handlerSearch(event: React.ChangeEvent): void;
-}
-
-const Search: React.FC<Search> = ({ handlerSearch, searchValue }) => {
+const Search: React.FC<SearchProps> = ({ handlerSearch, searchValue }) => {
   return (
     <div className={style.root}>
       <div className={style.icon}>

@@ -1,11 +1,6 @@
 import React from "react";
 import style from "./Form.module.scss";
-
-interface CheckboxProps {
-  checkboxID: string;
-  isChecked?: boolean;
-  checkboxChangeHandler: (event: React.ChangeEvent) => void;
-}
+import { CheckboxProps } from "../../../utils/interface";
 
 export const Checkbox: React.FC<CheckboxProps> = ({
   checkboxID,
