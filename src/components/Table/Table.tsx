@@ -14,6 +14,7 @@ import { RowData } from "../../utils/interface";
 import orderBy from "lodash/orderBy";
 import { quantityPage } from "../../utils/helpers";
 import { perPage } from "../../constants";
+import ChangePerPage from "../common/ChangePerPage/ChangePerPage";
 
 const axios = require("axios");
 
@@ -23,6 +24,7 @@ interface ITableData {
   checkAll: boolean;
   isFetching: boolean;
   sortDirection: boolean;
+  perPage: number;
   currentPage: number;
   prevPage: number;
 }
@@ -35,7 +37,8 @@ const Table: React.FC = () => {
     isFetching: false,
     sortDirection: true,
     currentPage: 1,
-    prevPage: 0
+    prevPage: 0,
+    perPage: perPage
   });
   const [search, setSearch] = useState<string>("");
 
@@ -143,7 +146,7 @@ const Table: React.FC = () => {
       });
     }
     if (
-      dataTable.currentPage * perPage <= dataTable.data.length &&
+      dataTable.currentPage * dataTable.perPage <= dataTable.data.length &&
       pagDirection === "next-page"
     ) {
       setDataTable({
@@ -152,6 +155,13 @@ const Table: React.FC = () => {
         prevPage: dataTable.prevPage + 1
       });
     }
+  };
+  const handlerChangePerPage = (event: React.FormEvent<HTMLSelectElement>) => {
+    const perPage = event.currentTarget.value;
+    setDataTable({
+      ...dataTable,
+      perPage: Number(perPage)
+    });
   };
 
   if (!dataTable.isFetching) return null;
@@ -211,8 +221,8 @@ const Table: React.FC = () => {
           )}
           {dataTable.data
             .slice(
-              dataTable.prevPage * perPage,
-              dataTable.currentPage * perPage
+              dataTable.prevPage * dataTable.perPage,
+              dataTable.currentPage * dataTable.perPage
             )
             .map(item => (
               <TableRow
@@ -228,12 +238,20 @@ const Table: React.FC = () => {
       <div className={style.footer}>
         <div>
           <span className="uppercase">active customers: </span>
-          <b>{dataTable.currentPage * perPage}</b>/{dataTable.data.length}
+          <b>{dataTable.currentPage * dataTable.perPage}</b>/
+          {dataTable.data.length}
         </div>
         <div className={style.navigation}>
-          <div className={style.perPage}>Rows per page: 10</div>
+          <div className={style.perPage}>
+            <span>Rows per page:</span>
+            <ChangePerPage handlerChangePerPage={handlerChangePerPage}/>
+          </div>
           <div className={style.quantity}>
-            {quantityPage(dataTable.currentPage, dataTable.data.length)}
+            {quantityPage(
+              dataTable.currentPage,
+              dataTable.data.length,
+              dataTable.perPage
+            )}
           </div>
           <div className={style.pagination}>
             <div
