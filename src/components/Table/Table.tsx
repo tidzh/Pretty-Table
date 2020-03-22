@@ -2,10 +2,18 @@ import React, { useEffect, useState } from "react";
 import style from "./Table.module.scss";
 import TableRow from "../TableRow/TableRow";
 import { Checkbox } from "../common/Form/Form";
-import { IconAdd, IconMore, IconSort } from "../common/Icons/Icons";
+import {
+  IconAdd,
+  IconMore,
+  IconPrev,
+  IconSort,
+  IconNext
+} from "../common/Icons/Icons";
 import Search from "../common/Search/Search";
 import { RowData } from "../../utils/interface";
 import orderBy from "lodash/orderBy";
+import { quantityPage } from "../../utils/helpers";
+import { perPage } from "../../constants";
 
 const axios = require("axios");
 
@@ -15,6 +23,8 @@ interface ITableData {
   checkAll: boolean;
   isFetching: boolean;
   sortDirection: boolean;
+  currentPage: number;
+  prevPage: number;
 }
 
 const Table: React.FC = () => {
@@ -23,7 +33,9 @@ const Table: React.FC = () => {
     dataCloneForSearch: [],
     checkAll: false,
     isFetching: false,
-    sortDirection: true
+    sortDirection: true,
+    currentPage: 1,
+    prevPage: 0
   });
   const [search, setSearch] = useState<string>("");
 
@@ -111,7 +123,7 @@ const Table: React.FC = () => {
     const sortDirection = dataTable.sortDirection ? "asc" : "desc";
     let sortResult;
     if (sortID === "name") {
-      sortResult = orderBy(dataTable.data, sortID, [sortDirection]);
+      sortResult = orderBy(dataTable.data, "name", [sortDirection]);
     } else {
       sortResult = orderBy(dataTable.data, result => result.status, "asc");
     }
@@ -120,6 +132,26 @@ const Table: React.FC = () => {
       data: [...sortResult],
       sortDirection: !dataTable.sortDirection
     });
+  };
+  const handlerPagination = (event: React.MouseEvent<HTMLElement>) => {
+    const pagDirection = event.currentTarget.id;
+    if (dataTable.currentPage !== 1 && pagDirection === "prev-page") {
+      setDataTable({
+        ...dataTable,
+        currentPage: dataTable.currentPage - 1,
+        prevPage: dataTable.prevPage - 1
+      });
+    }
+    if (
+      dataTable.currentPage * perPage <= dataTable.data.length &&
+      pagDirection === "next-page"
+    ) {
+      setDataTable({
+        ...dataTable,
+        currentPage: dataTable.currentPage + 1,
+        prevPage: dataTable.prevPage + 1
+      });
+    }
   };
 
   if (!dataTable.isFetching) return null;
@@ -177,17 +209,46 @@ const Table: React.FC = () => {
               </td>
             </tr>
           )}
-          {dataTable.data.map(item => (
-            <TableRow
-              key={item._id}
-              dataRow={item}
-              handlerActionsToggle={handlerActionsToggle}
-              checkboxChangeHandler={handlerCheckboxChange}
-              handlerDeleteItem={handlerDeleteItem}
-            />
-          ))}
+          {dataTable.data
+            .slice(
+              dataTable.prevPage * perPage,
+              dataTable.currentPage * perPage
+            )
+            .map(item => (
+              <TableRow
+                key={item._id}
+                dataRow={item}
+                handlerActionsToggle={handlerActionsToggle}
+                checkboxChangeHandler={handlerCheckboxChange}
+                handlerDeleteItem={handlerDeleteItem}
+              />
+            ))}
         </tbody>
       </table>
+      <div className={style.footer}>
+        <div>
+          <span className="uppercase">active customers: </span>
+          <b>{dataTable.currentPage * perPage}</b>/{dataTable.data.length}
+        </div>
+        <div className={style.navigation}>
+          <div className={style.perPage}>Rows per page: 10</div>
+          <div className={style.quantity}>
+            {quantityPage(dataTable.currentPage, dataTable.data.length)}
+          </div>
+          <div className={style.pagination}>
+            <div
+              id="prev-page"
+              onClick={handlerPagination}
+              className={style.prevPage}
+            >
+              <IconPrev />
+            </div>
+            <div id="next-page" onClick={handlerPagination}>
+              <IconNext />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

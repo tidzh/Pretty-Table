@@ -6,11 +6,13 @@
   border-radius: 5px;
   overflow: hidden;
 }
+
 .table {
   width: 100%;
   table-layout: fixed;
   text-align: left;
 }
+
 .thead {
   background: #f4f7fc;
   font-weight: 600;
@@ -19,16 +21,20 @@
   color: #606f89;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+
   tr {
     //border-left: 3px solid transparent;
   }
+
   th {
     padding: 15px 10px;
     vertical-align: middle;
   }
 }
+
 .tbody {
   color: #2e3b52;
+
   tr {
     background: #ffffff;
     //border-left: 3px solid transparent;
@@ -36,41 +42,51 @@
       background: #F4F7FC;
     }
   }
+
   th, td {
     padding: 15px 10px;
     vertical-align: middle;
   }
 }
+
 .checkbox {
   width: 40px;
   text-align: center;
 }
+
 .description, .name {
   width: 200px;
 }
+
 .actions {
   width: 100px;
   padding-right: 15px !important;
   text-align: center;
+
   svg {
     fill: #7D90B2;
   }
 }
+
 .rate {
   width: 70px;
 }
+
 .balance {
   width: 80px;
 }
+
 .sort {
   margin-left: 5px;
   cursor: pointer;
 }
+
 .header {
   background: #F4F7FC;
   padding: 20px;
   display: flex;
 }
+
 .add {
   background: #0A65FF;
   border-radius: 4px;
@@ -83,17 +99,68 @@
   margin-left: auto;
   display: flex;
   align-items: center;
+
   &:hover {
     background: #0052DB;
   }
+
   svg {
     fill: #ffffff;
     vertical-align: middle;
     margin-right: 5px;
   }
 }
+
 .notFound {
   text-align: center;
   font-size: 20px;
   font-weight: 600;
+}
+
+.footer {
+  color: #606F89;
+  background: #FFFFFF;
+  padding: 20px;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    fill: #606F89;
+    cursor: pointer;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  margin: 0 -30px;
+
+  div {
+    padding: 0 30px;
+  }
+
+}
+
+.perPage {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  color: #606F89;
+  margin-right: 50px
+}
+
+.quantity {
+  color: #606F89;
+  font-weight: 600;
+  font-size: 12px;
+  margin-right: 50px;
 }

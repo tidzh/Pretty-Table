@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2c536f8-ecb1-4536-ab14-cf3a262b40e8" name="Default Changelist" comment="Сортировка по статусу">
+    <list default="true" id="c2c536f8-ecb1-4536-ab14-cf3a262b40e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/constants.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Button/Buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Button/Buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Icons/Icons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Icons/Icons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +24,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -173,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584808362419</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Сортировка по статусу">
+      <created>1584814158927</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1584814158928</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,14 +209,14 @@
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
     <state x="762" y="330" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1152@0.0.2048.1152" timestamp="1584360144659" />
-    <state x="702" y="169" key="CommitChangelistDialog2" timestamp="1584814042231">
+    <state x="702" y="169" key="CommitChangelistDialog2" timestamp="1584868439704">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state x="702" y="169" key="CommitChangelistDialog2/0.0.2048.1152@0.0.2048.1152" timestamp="1584814042231" />
-    <state x="712" y="338" key="GistSnippet.InsertGistDialog" timestamp="1584642371071">
+    <state x="702" y="169" key="CommitChangelistDialog2/0.0.2048.1152@0.0.2048.1152" timestamp="1584868439704" />
+    <state x="712" y="338" key="GistSnippet.InsertGistDialog" timestamp="1584829974457">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state x="712" y="338" key="GistSnippet.InsertGistDialog/0.0.2048.1152@0.0.2048.1152" timestamp="1584642371071" />
+    <state x="712" y="338" key="GistSnippet.InsertGistDialog/0.0.2048.1152@0.0.2048.1152" timestamp="1584829974457" />
     <state x="889" y="476" key="Github.ShareDialog" timestamp="1584360283452">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
